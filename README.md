@@ -6,9 +6,21 @@ Firstly I added audio to the group code and loaded the audio file and created an
 ## Code Analysis
 I modified the visuals based on the group code to achieve a bouncing animation through the audio of the music.
 - Firstly I added audio loading and FFT object declaration
-
 ```
 let audio;
 let fft;
 let isPlaying = false;
+```
+-Add the audio of my choice to the function Audio preloaded into the function.
+```
+function preload() {
+  audio = loadSound('asset/summer.mp3'); 
+}
+
+```
+-I added the initialisation of the FFT object and the connection to the audio.
+```
+fft = new p5.FFT();
+audio.connect(fft);
+
 ```
