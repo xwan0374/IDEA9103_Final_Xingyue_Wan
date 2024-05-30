@@ -6,6 +6,8 @@ Firstly I added audio to the group code and loaded the audio file and created an
 ## Code Analysis
 I modified the visuals based on the group code to achieve a bouncing animation through the audio of the music.
 - Firstly I added audio loading and FFT object declaration
+
 ```let audio;
 let fft;
-let isPlaying = false;```
+let isPlaying = false;
+```
