@@ -11,25 +11,25 @@ let audio;
 let fft;
 let isPlaying = false;
 ```
--Add the audio of my choice to the function Audio preloaded into the function.
+- Add the audio of my choice to the function Audio preloaded into the function.
 ```
 function preload() {
   audio = loadSound('asset/summer.mp3'); 
 }
 
 ```
--I added the initialisation of the FFT object and the connection to the audio.
+- I added the initialisation of the FFT object and the connection to the audio.
 ```
 fft = new p5.FFT();
 audio.connect(fft);
 ```
--I created a button named ‘Play Audio’ using the createButton() function and set its position to (20, 20). I used the mousePressed() function to associate the toggleAudio() function with the button's click event as a toggle for the audio playback state.
+- I created a button named ‘Play Audio’ using the createButton() function and set its position to (20, 20). I used the mousePressed() function to associate the toggleAudio() function with the button's click event as a toggle for the audio playback state.
 ```
 let button = createButton('Play Audio');
 button.position(20, 20);
 button.mousePressed(toggleAudio);
 ```
--I added the `toggleAudio()` function to toggle the play state of the audio when the user clicks the play/pause button.
+- I added the `toggleAudio()` function to toggle the play state of the audio when the user clicks the play/pause button.
 ```
 function toggleAudio() {
   if (audio.isPlaying()) {
@@ -41,4 +41,19 @@ function toggleAudio() {
   }
 }
 ```
--
+- Finally, I added animateSegments() to animate the squares to the rhythm of the music. More the rhythm and volume of the music changes, the squares in the base code dynamically adjust the height of each block.
+```
+  function animateSegments(spectrum) {
+  let segmentIndex = 0;
+  for (let y = 0; y < numSegments; y++) {
+    for (let x = 0; x < numSegments; x++) {
+      let segment = segments[segmentIndex];
+      let segmentSize = map(spectrum[segmentIndex], 0, 255, 10,50);
+      segment.drawHeight = segmentSize;
+      segmentIndex++;
+    }
+  }
+}
+```
+
+
