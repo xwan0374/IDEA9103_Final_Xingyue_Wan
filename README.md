@@ -23,9 +23,22 @@ function preload() {
 fft = new p5.FFT();
 audio.connect(fft);
 ```
-I created a button named ‘Play Audio’ using the createButton() function and set its position to (20, 20). I used the mousePressed() function to associate the toggleAudio() function with the button's click event as a toggle for the audio playback state.
+-I created a button named ‘Play Audio’ using the createButton() function and set its position to (20, 20). I used the mousePressed() function to associate the toggleAudio() function with the button's click event as a toggle for the audio playback state.
 ```
 let button = createButton('Play Audio');
 button.position(20, 20);
 button.mousePressed(toggleAudio);
 ```
+-I added the `toggleAudio()` function to toggle the play state of the audio when the user clicks the play/pause button.
+```
+function toggleAudio() {
+  if (audio.isPlaying()) {
+    audio.pause();
+    isPlaying = false;
+  } else {
+    audio.play();
+    isPlaying = true;
+  }
+}
+```
+-
